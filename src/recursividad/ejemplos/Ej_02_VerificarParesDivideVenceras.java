@@ -13,6 +13,17 @@ public class Ej_02_VerificarParesDivideVenceras {
 		if( flag == -1 ) System.out.println("No hay número par");
 		
 		else System.out.println("Hay número par");
+		
+		//-------------------------------------------------------------------------------->
+		
+		System.out.println();
+		System.out.println("Método dos");
+		
+		boolean flag2 = verificarParDivideVenceras2(arreglo, posI, posF);
+		
+		if( flag2 == false ) System.out.println("No hay número par");
+		
+		else System.out.println("Hay número par");
 	}
 
 	/**
@@ -35,5 +46,18 @@ public class Ej_02_VerificarParesDivideVenceras {
 			if( derecha % 2 == 0 ) return derecha;
 		}
 		return -1;
+	}
+	
+	/**
+	 * Método 2 verificar pares divide y vencerás
+	 * @param arreglo, posI, posF
+	 * @return
+	 */
+	private static boolean verificarParDivideVenceras2(int[] arreglo, int posI, int posF) {
+		
+		if( posI == posF ) 
+			return arreglo[posI] % 2 == 0;
+		else 
+			return verificarParDivideVenceras2(arreglo, posI, (posI + posF)/2) || verificarParDivideVenceras2(arreglo, ((posI + posF)/2)+1, posF);
 	}
 }
