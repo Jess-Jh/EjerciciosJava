@@ -188,7 +188,6 @@ public class Piso {
 	 */
 	private void validarCuarto(int x, int y) {
 		
-		
 		if(x < 0 || x > listaCuartos.length-1 || y < 0 || y > listaCuartos[x].length-1 ||listaCuartos[x][y].getTipoCuarto() == TipoCuarto.ENTRADA 
 				 || listaCuartos[x][y].getTipoCuarto() == TipoCuarto.PASILLO || listaCuartos[x][y].getEstado().equals("I"))		 
 			return;
