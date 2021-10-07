@@ -20,14 +20,13 @@ public class Ej_14_SumarElementosMatriz {
 		
 		if (i != matriz.length-1 || j >= 0) {
 
-			if (j >= 0) {
-				return sumarElementosMatriz(matriz, i, j-1) + matriz[i][j];
-			} else {
+			if (j >= 0) return sumarElementosMatriz(matriz, i, j-1) + matriz[i][j];
+			
+			else {
 				i++;
 				j = matriz[i].length-1;
 				return sumarElementosMatriz(matriz, i, j);
 			}
-		} else 
-			return 0;
+		} else return 0;
 	}
 }
