@@ -47,17 +47,14 @@ public class EjemplosConjuntos {
 		listaClientes.add(cliente2);
 		listaClientes.add(cliente3);
 		
-		
 		for (Cliente cliente : listaClientes) {
 			System.out.println("Clientes: " +cliente.getNombres());
 			
 		}
-
 	}
 	
 	private static void ejemplo2_HashSet() {
-		
-		
+			
 		Set<String> hs = new HashSet<>();
 		System.out.println("Datos agregados al HashSet");
 		hs.add("Alonso");
@@ -68,13 +65,9 @@ public class EjemplosConjuntos {
 		hs.add("manuela");
 		hs.add("Manuela");
 		
-		System.out.println(hs);
-		
+		System.out.println(hs);	
 	}
-	
-	
-	
-	
+
 	private static void ejemplo1_TreeSet() {
 		
 		class Comparacion implements Comparator {
@@ -88,9 +81,7 @@ public class EjemplosConjuntos {
 		}
 		
 		System.out.println("Iniciando ejemplo TreeSet");
-		
-		
-		
+
 //		TreeSet ts = new TreeSet(new Comparacion());
 		TreeSet ts = new TreeSet();
 		

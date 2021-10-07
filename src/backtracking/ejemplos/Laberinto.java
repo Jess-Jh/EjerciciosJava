@@ -1,4 +1,4 @@
-package backtracking.ejemplos;
+	package backtracking.ejemplos;
 
 
 public class Laberinto{
