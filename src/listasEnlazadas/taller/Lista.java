@@ -1,7 +1,5 @@
 package listasEnlazadas.taller;
 
-import listasEnlazadas.ejercicio.Nodo;
-
 public class Lista {
 	Nodo nodoPrimero;
 	int tamano;
@@ -38,6 +36,20 @@ public class Lista {
         tamano++;
     }
 	
+	public void agregarAlFinal(String valor){
+        Nodo nuevo = new Nodo(valor);
+        
+        if (esVacia()) nodoPrimero = nuevo;
+        
+        else{
+            Nodo aux = nodoPrimero;
+            while(aux.getSiguienteNodo() != null) aux = aux.getSiguienteNodo();
+            
+            aux.setSiguienteNodo(nuevo);
+        }
+        tamano++;
+    }
+	
 	public void agregarAlInicio(int valor){
         Nodo nuevo = new Nodo(valor);
         
@@ -55,7 +67,13 @@ public class Lista {
 		nuevo.setSiguienteNodo(nodoPrimero);
 		nodoPrimero = nuevo;
 		tamano++;
-		
+	}
+
+	public void agregarNodo(String dato) {
+		Nodo nuevo = new Nodo(dato);
+		nuevo.setSiguienteNodo(nodoPrimero);
+		nodoPrimero = nuevo;
+		tamano++;
 	}
 	
 	public boolean esVacia(){
@@ -67,7 +85,7 @@ public class Lista {
 	public void imprimirLista() {
 		Nodo actual = nodoPrimero;
 		while(actual != null) {
-			System.out.print("[" + actual.getValorNodo() + "]->");
+			System.out.print("[" + actual.getCadenaNodo() + "]->");
 			actual = actual.getSiguienteNodo();
 			
 		}

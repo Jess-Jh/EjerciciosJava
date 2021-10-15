@@ -1,12 +1,10 @@
 package listasEnlazadas.taller;
 
-import listasEnlazadas.ejercicio.Nodo;
-
 public class Ej_01_ObtenerValoresImparesListaNumeros {
 	
-	public static Lista obtenerListaNumerosImpares(Lista numImpares) {
+	public static Lista obtenerListaNumerosImpares(Lista numeros) {
 		Lista listaImpares = new Lista();
-		Nodo aux = numImpares.getNodoPrimero();
+		Nodo aux = numeros.getNodoPrimero();
 		
 		while(aux != null) {
 			if(aux.getValorNodo() % 2 != 0) 

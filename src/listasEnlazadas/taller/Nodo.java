@@ -3,9 +3,15 @@ package listasEnlazadas.taller;
 public class Nodo {
 	Nodo siguienteNodo;
 	int valorNodo;
+	String cadenaNodo;
 	
 	public Nodo(int valorNodo) {
 		this.valorNodo = valorNodo;
+		siguienteNodo = null;
+	}
+	
+	public Nodo(String cadenaNodo) {
+		this.cadenaNodo = cadenaNodo;
 		siguienteNodo = null;
 	}
 
@@ -21,4 +27,11 @@ public class Nodo {
 	public void setValorNodo(int valorNodo) {
 		this.valorNodo = valorNodo;
 	}
+	public String getCadenaNodo() {
+		return cadenaNodo;
+	}
+	public void setCadenaNodo(String cadenaNodo) {
+		this.cadenaNodo = cadenaNodo;
+	}
+	
 }
