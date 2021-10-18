@@ -2,14 +2,14 @@ package listasEnlazadas.taller;
 
 public class Ej_02_ListaPalabrasMasVocales {
 	
-	public static Lista obtenerListaPalabrasMas2Vocales(Lista palabras) {
-		Lista listaPalabras = new Lista();
-		Nodo aux = palabras.getNodoPrimero();
+	public static Lista<String> obtenerListaPalabrasMas2Vocales(Lista<String> palabras) {
+		Lista<String> listaPalabras = new Lista<>();
+		Nodo<String> aux = palabras.getNodoPrimero();
 		
 		while(aux != null) {
-			int numVocales = contarVocalesPalabra(aux.getCadenaNodo());
+			int numVocales = contarVocalesPalabra(aux.getValorNodo());
 			if(numVocales > 2) 
-				listaPalabras.agregarAlFinal(aux.getCadenaNodo());
+				listaPalabras.agregarAlFinal(aux.getValorNodo());
 			
 			aux = aux.getSiguienteNodo();
 		}
@@ -19,7 +19,7 @@ public class Ej_02_ListaPalabrasMasVocales {
 	private static int contarVocalesPalabra(String palabra) {
 		int contador = 0;
 		
-		for(int x=0;x<palabra.length();x++) {
+		for(int x = 0; x < palabra.length(); x++) {
 			 if ((palabra.charAt(x)=='a') || (palabra.charAt(x)=='á') || (palabra.charAt(x)=='e')|| (palabra.charAt(x)=='é') || 
 				 (palabra.charAt(x)=='i') || (palabra.charAt(x)=='í') || (palabra.charAt(x)=='o') || (palabra.charAt(x)=='ó') || 
 				 (palabra.charAt(x)=='u') || (palabra.charAt(x)=='ú')){ 
@@ -30,8 +30,8 @@ public class Ej_02_ListaPalabrasMasVocales {
 	}
 
 	public static void main(String[] args) {
-		Lista lista = new Lista();
-		Lista listaPalabras = new Lista();
+		Lista<String> lista = new Lista<>();
+		Lista<?> listaPalabras = new Lista<>();
 		
 		lista.agregarNodo("manzna");
 		lista.agregarNodo("lapiz");

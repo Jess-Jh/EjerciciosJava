@@ -1,37 +1,25 @@
 package listasEnlazadas.taller;
 
-public class Nodo {
-	Nodo siguienteNodo;
-	int valorNodo;
-	String cadenaNodo;
+public class Nodo<T> {
+	private Nodo<T> siguienteNodo;
+	private T valorNodo;
 	
-	public Nodo(int valorNodo) {
+	public Nodo(T valorNodo) {
 		this.valorNodo = valorNodo;
-		siguienteNodo = null;
-	}
-	
-	public Nodo(String cadenaNodo) {
-		this.cadenaNodo = cadenaNodo;
 		siguienteNodo = null;
 	}
 
-	public Nodo getSiguienteNodo() {
+	public Nodo<T> getSiguienteNodo() {
 		return siguienteNodo;
 	}
-	public void setSiguienteNodo(Nodo siguienteNodo) {
+	public void setSiguienteNodo(Nodo<T> siguienteNodo) {
 		this.siguienteNodo = siguienteNodo;
 	}
-	public int getValorNodo() {
+	public T getValorNodo() {
 		return valorNodo;
 	}
-	public void setValorNodo(int valorNodo) {
+	public void setValorNodo(T valorNodo) {
 		this.valorNodo = valorNodo;
-	}
-	public String getCadenaNodo() {
-		return cadenaNodo;
-	}
-	public void setCadenaNodo(String cadenaNodo) {
-		this.cadenaNodo = cadenaNodo;
 	}
 	
 }

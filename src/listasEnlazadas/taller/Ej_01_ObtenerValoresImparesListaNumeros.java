@@ -2,9 +2,9 @@ package listasEnlazadas.taller;
 
 public class Ej_01_ObtenerValoresImparesListaNumeros {
 	
-	public static Lista obtenerListaNumerosImpares(Lista numeros) {
-		Lista listaImpares = new Lista();
-		Nodo aux = numeros.getNodoPrimero();
+	public static Lista<Integer> obtenerListaNumerosImpares(Lista<Integer> numeros) {
+		Lista<Integer> listaImpares = new Lista<>();
+		Nodo<Integer> aux = numeros.getNodoPrimero();
 		
 		while(aux != null) {
 			if(aux.getValorNodo() % 2 != 0) 
@@ -17,8 +17,8 @@ public class Ej_01_ObtenerValoresImparesListaNumeros {
 	
 	public static void main(String[] args) {
 		
-		Lista lista = new Lista();
-		Lista listaImpares = new Lista();
+		Lista<Integer> lista = new Lista<>();
+		Lista<Integer> listaImpares = new Lista<>();
 		
 		lista.agregarNodo(1);
 		lista.agregarNodo(2);

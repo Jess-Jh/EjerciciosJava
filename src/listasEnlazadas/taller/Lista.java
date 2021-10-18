@@ -1,18 +1,20 @@
 package listasEnlazadas.taller;
 
-public class Lista {
-	Nodo nodoPrimero;
-	int tamano;
+import java.util.Iterator;
+
+public class Lista<T> implements Iterable<T> {
+	private Nodo<T> nodoPrimero;
+	private int tamano;
 	
 	public Lista() {
 		nodoPrimero = null;
 		tamano = 0;
 	}
 
-	public Nodo getNodoPrimero() {
+	public Nodo<T> getNodoPrimero() {
 		return nodoPrimero;
 	}
-	public void setNodoPrimero(Nodo nodoPrimero) {
+	public void setNodoPrimero(Nodo<T> nodoPrimero) {
 		this.nodoPrimero = nodoPrimero;
 	}
 	public int getTamano() {
@@ -22,13 +24,13 @@ public class Lista {
 		this.tamano = tamano;
 	}
 	
-	public void agregarAlFinal(int valor){
-        Nodo nuevo = new Nodo(valor);
+	public void agregarAlFinal(T valor){
+        Nodo<T> nuevo = new Nodo<>(valor);
         
         if (esVacia()) nodoPrimero = nuevo;
         
         else{
-            Nodo aux = nodoPrimero;
+            Nodo<T> aux = nodoPrimero;
             while(aux.getSiguienteNodo() != null) aux = aux.getSiguienteNodo();
             
             aux.setSiguienteNodo(nuevo);
@@ -36,22 +38,8 @@ public class Lista {
         tamano++;
     }
 	
-	public void agregarAlFinal(String valor){
-        Nodo nuevo = new Nodo(valor);
-        
-        if (esVacia()) nodoPrimero = nuevo;
-        
-        else{
-            Nodo aux = nodoPrimero;
-            while(aux.getSiguienteNodo() != null) aux = aux.getSiguienteNodo();
-            
-            aux.setSiguienteNodo(nuevo);
-        }
-        tamano++;
-    }
-	
-	public void agregarAlInicio(int valor){
-        Nodo nuevo = new Nodo(valor);
+	public void agregarAlInicio(T valor){
+        Nodo<T> nuevo = new Nodo<>(valor);
         
         if (esVacia()) nodoPrimero = nuevo;
         
@@ -62,15 +50,8 @@ public class Lista {
         tamano++;
     }
 	
-	public void agregarNodo(int dato) {
-		Nodo nuevo = new Nodo(dato);
-		nuevo.setSiguienteNodo(nodoPrimero);
-		nodoPrimero = nuevo;
-		tamano++;
-	}
-
-	public void agregarNodo(String dato) {
-		Nodo nuevo = new Nodo(dato);
+	public void agregarNodo(T dato) {
+		Nodo<T> nuevo = new Nodo<>(dato);
 		nuevo.setSiguienteNodo(nodoPrimero);
 		nodoPrimero = nuevo;
 		tamano++;
@@ -83,11 +64,52 @@ public class Lista {
     }
 	
 	public void imprimirLista() {
-		Nodo actual = nodoPrimero;
+		Nodo<T> actual = nodoPrimero;
 		while(actual != null) {
-			System.out.print("[" + actual.getCadenaNodo() + "]->");
+			System.out.print("[" + actual.getValorNodo() + "]->");
 			actual = actual.getSiguienteNodo();
 			
+		}
+	}
+
+	@Override
+	public Iterator<T> iterator() {
+		return new IteradorListaSimple (nodoPrimero);
+	}
+	
+	public class IteradorListaSimple implements Iterator<T>{
+
+		private Nodo<T> nodo;
+		private int posicion;
+		
+		/**
+		 * Constructor de la clase Iterador
+		 * @param aux Primer Nodo de la lista
+		 */
+		public IteradorListaSimple(Nodo<T> nodo) {
+			this.nodo = nodo;
+			this.posicion = 0;
+		}
+		
+		@Override
+		public boolean hasNext() {
+			return nodo!=null;
+		}
+
+		@Override
+		public T next() {
+			T valor = nodo.getValorNodo();
+			nodo = nodo.getSiguienteNodo();
+			posicion++;
+			return valor;
+		}
+		
+		/**
+		 * Posición actual de la lista
+		 * @return posición
+		 */
+		public int getPosicion() {
+			return posicion;
 		}
 	}
 }
