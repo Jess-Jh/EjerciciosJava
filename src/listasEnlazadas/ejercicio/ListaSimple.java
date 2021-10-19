@@ -41,4 +41,8 @@ public class ListaSimple {
         }
         tamano++;
     }
+    
+
+    
+
 }

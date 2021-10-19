@@ -2,6 +2,7 @@ package listasEnlazadasGenericas;
 
 import java.util.Iterator;
 
+
 /**
  * Definición de la clase lista Simple de tipo Generics
  * @param <T>
@@ -90,7 +91,7 @@ public class ListaSimple<T> implements Iterable<T> {
 		Nodo<T> aux = nodoPrimero;
 		
 		while(aux!=null) {
-			System.out.print( aux.getValorNodo()+"\t" );
+			System.out.print( "["+aux.getValorNodo()+"]"+"->" );
 			aux = aux.getSiguienteNodo();			
 		}
 		System.out.println();
@@ -233,6 +234,8 @@ public class ListaSimple<T> implements Iterable<T> {
 		public int getPosicion() {
 			return posicion;
 		}
+		
+		
 	}
 	
 	//Metodos get y set de la clase ListaSimple
@@ -255,6 +258,24 @@ public class ListaSimple<T> implements Iterable<T> {
 	public void setTamanio(int tamaño) {
 		this.tamanio = tamaño;
 	}
+
+    public ListaSimple<T> concatenarDosListasSimplesEnlazadas(ListaSimple<T> list1, ListaSimple<T> list2) {
+    	ListaSimple<T> linkedList = new ListaSimple<>();
+        int size = list1.getTamanio() + list2.getTamanio();
+        for (int i = 0, j = 0; i < size; i++) {
+            if (i < list1.getTamanio()) {
+                linkedList.agregarfinal(list1.obtenerValorNodo(i));
+                
+            } else {
+            	linkedList.agregarfinal(list2.obtenerValorNodo(j));
+                j++;
+            }
+        }
+        return linkedList;
+    }
+	
+	
+
 
 
 }

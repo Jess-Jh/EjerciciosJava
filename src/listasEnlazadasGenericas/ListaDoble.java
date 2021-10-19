@@ -17,7 +17,7 @@ public class ListaDoble<T> implements Iterable<T> {
 	
 	public ListaDoble() {
 		nodoPrimero = null;
-		nodoPrimero = null;
+		nodoUltimo = null;
 		tamanio = 0;
 	}
 	
@@ -133,7 +133,7 @@ public class ListaDoble<T> implements Iterable<T> {
 		
 		NodoDoble<T> aux = nodoPrimero;
 		
-		while(aux!=null) {
+		while(aux != null) {
 			System.out.print( aux.getValorNodo()+"\t" );
 			aux = aux.getSiguienteNodo();			
 		}
@@ -146,6 +146,17 @@ public class ListaDoble<T> implements Iterable<T> {
 			System.out.print( aux.getValorNodo()+"\t" );
 		}
 		System.out.println();	
+		
+//		if(!estaVacia()) {
+//			String datos="<=>";
+//	        NodoDoble<T> auxiliar = nodoUltimo;
+//	        while (auxiliar!=null){
+//			   datos = datos +"["+auxiliar.getValorNodo()+"]<=>";
+//			   auxiliar=auxiliar.getAnteriorNodo();
+//	        }
+//	        System.out.println("Mostrando datos de FIn a Inicio" + datos);
+//		}
+		
 	}
 	
 	//Eliminar dado el valor de un nodo
