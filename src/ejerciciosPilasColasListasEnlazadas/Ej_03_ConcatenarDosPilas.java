@@ -10,6 +10,8 @@ public class Ej_03_ConcatenarDosPilas {
 		Pila<Integer> pila1 = new Pila<Integer>();
 		Pila<Integer> pila2 = new Pila<Integer>();
 		Pila<Integer> pilaAux = new Pila<Integer>();
+		
+		int tamano = pila1.getTamano();
 
 		for (int i = 0; i < 10; i++) {
 			pila1.push((int) Math.floor(Math.random() * 100));
@@ -20,11 +22,11 @@ public class Ej_03_ConcatenarDosPilas {
 		System.out.println("Pila 2");
 		pila2.imprimir();
 
-		for (int i = 0; i < 10; i++) {
+		for (int i = 0; i < tamano; i++) {
 			pilaAux.push(pila2.pop());
 		}
 
-		for (int i = 0; i < 10; i++) {
+		for (int i = 0; i < tamano; i++) {
 			pila1.push(pilaAux.pop());
 		}
 		System.out.println("Pilas concatenadas");
