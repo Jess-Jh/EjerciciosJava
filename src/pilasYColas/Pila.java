@@ -42,7 +42,7 @@ public class Pila<T> {
 	 * @return: Elemento de tipo genérico.
 	 */
 	public T ultimo() {
-		return ultimo.getElemento();
+		return ultimo.getValorNodo();
 	}
 	/**
 	 * Método que inserta un elemento de tipo genérico en la Pila.
@@ -62,8 +62,8 @@ public class Pila<T> {
 		if(Vacia()) {
 			throw new Exception("La pila está vacía");
 		} else {
-			T element = ultimo.getElemento();
-			ultimo = ultimo.getSiguiente();
+			T element = ultimo.getValorNodo();
+			ultimo = ultimo.getSiguienteNodo();
 			tamaño--;
 			return element;
 		}
@@ -84,8 +84,8 @@ public class Pila<T> {
 		String texto = "";
 		Nodo<T> aux = ultimo;
 		while(aux != null) {
-			texto += "\n" + aux.getElemento();
-			aux = aux.getSiguiente();
+			texto += "\n" + aux.getValorNodo();
+			aux = aux.getSiguienteNodo();
 		}
 		return texto;	
 	}

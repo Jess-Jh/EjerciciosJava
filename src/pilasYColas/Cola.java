@@ -2,8 +2,8 @@ package pilasYColas;
 
 public class Cola<T> {
 	
-	private Nodo<T> primero;
-	private Nodo<T> ultimo;
+	protected Nodo<T> primero;
+	protected Nodo<T> ultimo;
 	private int tamaño;
 	/**
 	 * Constructor con la Cola vacia
@@ -13,6 +13,26 @@ public class Cola<T> {
 		ultimo = null;
 		tamaño = 0;
 	}
+	
+	public Nodo<T> getPrimero() {
+		return primero;
+	}
+	public void setPrimero(Nodo<T> primero) {
+		this.primero = primero;
+	}
+	public Nodo<T> getUltimo() {
+		return ultimo;
+	}
+	public void setUltimo(Nodo<T> ultimo) {
+		this.ultimo = ultimo;
+	}
+	public int getTamaño() {
+		return tamaño;
+	}
+	public void setTamaño(int tamaño) {
+		this.tamaño = tamaño;
+	}
+
 	/**
 	 * Método que comprueba si la Cola está vacía o no.
 	 * @return: True si está vacía, false si no.
@@ -30,7 +50,7 @@ public class Cola<T> {
 		int cont=0;
 		Nodo<T> aux = primero;
 		while(aux != null) {
-			aux = aux.getSiguiente();
+			aux = aux.getSiguienteNodo();
 			cont++;
 		}
 		return cont;
@@ -41,7 +61,7 @@ public class Cola<T> {
 	 * @return: Elemento de tipo genérico.
 	 */
 	public T primero() {
-		return primero.getElemento();
+		return primero.getValorNodo();
 	}
 	/**
 	 * Método que vacia la cola.
@@ -61,10 +81,10 @@ public class Cola<T> {
 			primero = aux;
 			ultimo = aux;
 		} else if(longitud() == 1) {
-			primero.setSiguiente(aux);
+			primero.setSiguienteNodo(aux);
 			ultimo = aux;
 		} else {
-			ultimo.setSiguiente(aux);
+			ultimo.setSiguienteNodo(aux);
 			ultimo=aux;
 		}
 		tamaño++;
@@ -78,11 +98,62 @@ public class Cola<T> {
 		if(isVacia()) {
 			throw new Exception("la cola está vacía");
 		} else {
-			Nodo<T> aux = primero.getSiguiente();
+			Nodo<T> aux = primero.getSiguienteNodo();
 			primero = null;
 			primero = aux;
 			tamaño--;
 		}
+	}
+	
+	/**
+	 * Retorna y elimina el elemento que está al incio de la Cola
+	 * @return Primer elemento de la Cola
+	 */
+	public T desencolar() {
+		
+		if(isVacia()) throw new RuntimeException("La Cola está vacía");
+		
+		T dato = primero.getValorNodo();
+		primero = primero.getSiguienteNodo();
+		
+		if(primero==null) ultimo = null;
+		
+		tamaño--;
+		return dato;
+	}
+	
+	@Override
+	protected Cola<T> clone() {
+		
+		Cola<T> nueva = new Cola<>();
+		Nodo<T> aux = getPrimero();
+		
+		while(aux!=null) {
+			nueva.insertar( aux.getValorNodo() );
+			aux = aux.getSiguienteNodo();
+		}
+		return nueva;		
+	}
+	
+	/**
+	 * Verifica si la Cola es idéntica a la actual
+	 * @param cola Cola a comparar
+	 * @return True si son iguales
+	 */
+	public boolean sonIdenticas(Cola<T> cola) {
+		
+		Cola<T> clon1 = clone();
+		Cola<T> clon2 = cola.clone();
+		
+		if(clon1.getTamaño() == clon2.getTamaño()) {
+			
+			while( !clon1.isVacia() ) {				
+				if( !clon1.desencolar().equals( clon2.desencolar() )) 
+					return false;				
+			}	
+		} else return false;
+		
+		return  true;
 	}
 	
 	public String toString() {
@@ -90,8 +161,8 @@ public class Cola<T> {
 		String texto = "";
 		Nodo<T> aux = primero;
 		while(aux != null) {
-			texto += "\n" + aux.getElemento();
-			aux = aux.getSiguiente();
+			texto += "\n" + aux.getValorNodo();
+			aux = aux.getSiguienteNodo();
 		}
 		return texto;
 	}

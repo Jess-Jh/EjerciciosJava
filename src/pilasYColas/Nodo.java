@@ -2,34 +2,39 @@ package pilasYColas;
 
 
 public class Nodo<T> {
-	private T elemento;
-	private Nodo<T> siguiente;
+	private Nodo<T> siguienteNodo;
+	private T valorNodo;
 	
 	/**
-	 * Constructor que crea un Nodo con su elemento y puntero.
-	 * @param elemento: Elemento de tipo genérico.
-	 * @param siguiente: Puntero.
+	 * Constructor de la clase Nodo
+	 * @param dato Elemento que se guarda en el Nodo
 	 */
-	public Nodo(T elemento, Nodo<T> siguiente) {
-		this.elemento=elemento;
-		this.siguiente=siguiente;
+	public Nodo(T valorNodo) {
+		this.valorNodo = valorNodo;
 	}
-
-	public T getElemento() {
-		return elemento;
+	/**
+	 * Constructor de la clase Nodo
+	 * @param dato Elemento que se guarda en el Nodo
+	 * @param siguiente Enlace al siguiente Nodo
+	 */
+	public Nodo(T dato, Nodo<T> siguiente) {
+		super();
+		this.valorNodo = dato;
+		this.siguienteNodo = siguiente;
 	}
-
-	public void setElemento(T elemento) {
-		this.elemento = elemento;
+	//Metodos get y set de la clase Nodo
+	
+	public Nodo<T> getSiguienteNodo() {
+		return siguienteNodo;
 	}
-
-	public Nodo<T> getSiguiente() {
-		return siguiente;
+	public void setSiguienteNodo(Nodo<T> siguienteNodo) {
+		this.siguienteNodo = siguienteNodo;
 	}
-
-	public void setSiguiente(Nodo<T> siguiente) {
-		this.siguiente = siguiente;
+	public T getValorNodo() {
+		return valorNodo;
 	}
-
+	public void setValorNodo(T valorNodo) {
+		this.valorNodo = valorNodo;
+	}
 	
 }
